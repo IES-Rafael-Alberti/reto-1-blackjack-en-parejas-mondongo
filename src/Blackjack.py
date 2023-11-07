@@ -7,16 +7,11 @@ def inicio(modo):
     else:
         print("Ingrese un modo de juego válido")
     
-def jugadores(modo):
-    if modo == "1":
-        jugador = input("Ingrese su apodo: ")
-        return jugador
-    else:
-        jugador = input("Jugador 1 - Ingrese su apodo: ")
-        jugador2 = input("Jugador 2 - Ingrese su apodo: ")
-        return jugador, jugador2
+def jugadores():
+    jugador = input("Ingrese su apodo: ")
+    return jugador
 
-def DarCarta(carta , a):
+def DarCarta(carta , a , jugador):
     carta=str(random.randint(0, 12))
     match (carta):
         case ("0"):
@@ -37,31 +32,19 @@ def DarCarta(carta , a):
             a="7"
         case ("8"):
             a="8"
-            print(a)
+           
         case ("9"):
             a="9"
-            print(a)
+            
         case ("10"):
             a="J"
-            print(a)
+           
         case ("11"):
             a="Q"
-            print(a)
+            
         case ("12"):
             a="K"
-            print(a)
-
-
-
-
-
-
-
-
-
-
-
-
+    print(f"{jugador} : Tus cartas son => {a}")
 
 def main():
     modo = input("""Elija el modo de juego:
@@ -71,10 +54,17 @@ def main():
     carta=0
     a=str()
     inicio(modo)
-    jugadores(modo)
-    DarCarta(carta ,a )
-    
+    if modo == "1":
+        jugador=jugadores()
+    elif modo == "2":
+        jugador=jugadores()
 
+        
+
+    DarCarta(carta , a , jugador  )
+    
+def prueba(jugador1, jugador2):
+    print(jugador1 , jugador2)
 
 
 if __name__ == "__main__":
