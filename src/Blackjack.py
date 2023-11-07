@@ -1,15 +1,4 @@
 import random
-def inicio(modo):
-    print("Elija el modo de juego:")
-    print("1. Contra la máquina")
-    print("2. Dos jugadores")
-   
-    if modo == "1":
-        return modo
-    elif modo == "2":
-        return modo 
-    else:
-        print("Ingrese un modo de juego válido")
     
 def jugadores(modo):
     if modo == "1":
@@ -25,8 +14,17 @@ def jugadores(modo):
 
 
 def main():
-    modo = input()
-    inicio(modo)
+    modo = input("""Elija el modo de juego:
+    1. Contra la máquina
+    2. Dos jugadores
+    => """)
+
+    if modo == "1":
+        return modo
+    elif modo == "2":
+        return modo 
+    else:
+        print("Ingrese un modo de juego válido")
     jugadores(modo)
     
 
@@ -34,3 +32,8 @@ def main():
 
 if __name__ == "__main__":
     main() 
+
+
+
+
+
