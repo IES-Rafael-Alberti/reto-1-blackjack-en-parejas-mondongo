@@ -7,54 +7,63 @@ def inicio(modo):
     else:
         print("Ingrese un modo de juego válido")
     
-def jugadores():
-    jugador = input("Ingrese su apodo: ")
-    return jugador
+def jugadores(modo):
+    if modo == "1":
+        jugador = input("Ingrese su apodo: ")
+        return jugador
+    elif modo == "2":
+        jugador1 = input("Jugador 1 - Ingrese su apodo: ")
+        jugador2 = input("Jugador 2 - Ingrese su apodo: ")
+        return jugador1, jugador2
 
 def DarCarta(carta , a , jugador , b ):
     carta=str(random.randint(0, 12))
     
     match (carta):
         case ("0"):
-            a="0"
-            b=0
+            a+="0"
+            b+=10
         case ("1"):
-            a="A"
-            b=10
+            a+="A"
+            if b > 11:
+                b=1
+            else:
+                b=10
         case ("2"):
-            a="2"
-            b=2
+            a+="2"
+            b+=2
         case ("3"):
-            a="3"
-            b=3
+            a+="3"
+            b+=3
         case ("4"):
-            a="4"
-            b=4
+            a+="4"
+            b+=4
         case ("5"):
-            a="5"
-            b=5
+            a+="5"
+            b+=5
         case ("6"):
-            a="6"
-            b=6
+            a+="6"
+            b+=6
         case ("7"):
-            a="7"
-            b=7
+            a+="7"
+            b+=7
         case ("8"):
-            a="8"
-            b=8
+            a+="8"
+            b+=8
         case ("9"):
-            a="9"
-            b=9
+            a+="9"
+            b+=9
         case ("10"):
-            a="J"
-            b=10  
+            a+="J"
+            b+=10  
         case ("11"):
-            a="Q"
-            b=10    
+            a+="Q"
+            b+=10    
         case ("12"):
-            a="K"
-            b=10
+            a+="K"
+            b+=10
     print(f"{jugador} : Tus cartas son => {a} = {b}")
+    return a , b
 
 def PedirCarta( pedircarta):
     pedir = input("Quieres otra carta ? s/n : ")
@@ -65,6 +74,7 @@ def PedirCarta( pedircarta):
     elif pedir == "n":
         pedircarta=False
         return pedircarta
+
 
 
 def main():
@@ -78,11 +88,37 @@ def main():
     inicio(modo)
     if modo == "1":
         jugador=jugadores()
+    elif modo == "2" :
+        jugador1=""
+        jugador1=jugadores(modo)
+        jugador2=jugadores(modo)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     pedircarta = True
     while pedircarta == True :
-        DarCarta(carta , a , jugador , b)
-        (PedirCarta(pedircarta))
-    
+        a , b = DarCarta(carta , a , jugador , b)
+        pedircarta = (PedirCarta(pedircarta))
         
 
     
